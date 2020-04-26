@@ -4,7 +4,7 @@ from .models import User_Cluster_Hmeans, Movie_Cluster_Hmeans
 from .models import User_Cluster_Kmeans, Movie_Cluster_Kmeans
 from .models import User_Cluster_EM, Movie_Cluster_EM
 from .models import Subscription_manager
-#
+
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
    list_display = ['id', 'user', 'gender', 'age','occupation', 'approval', 'subscription']

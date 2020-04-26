@@ -2,13 +2,9 @@
   <v-container class="pa-2" fluid grid-list-md>
     <div v-if="this.$store.state.data.movieSearchList.length">
       {{ $store.state.data.movieSearchList.length }}개가 조회되었습니다.
-      <!-- <v-btn @click="seemode_rate = false">조회 순</v-btn> -->
       <v-btn @click="seemode_rate = false">라이브러리 순</v-btn>
       <v-btn @click="seemode_rate = true">평점 순</v-btn>
     </div>
-    <!-- <div v-else style="color: white">
-      영화가 없어요!!!
-    </div> -->
     <v-layout row wrap>
       <!-- movieList를 평점순, 조회순으로 받기 위한 computed 입니다. 있어야합니다. -->
       {{ view_by_averagerate }}
@@ -74,7 +70,6 @@ export default {
     page: 1,
     seemode_rate:false,
     tmp_movieList:[],
-    // movielist:[],
     num:1,
   }),
   computed: {

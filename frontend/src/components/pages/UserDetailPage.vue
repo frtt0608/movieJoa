@@ -77,7 +77,6 @@ export default {
       const id = this.$route.params.id
       var profile = await axios.get(`${apiUrl}/users/${id}`)
       this.profile_data = profile.data
-      // console.log(profile)
     },
     search() {
       router.push({name:'user-search'})

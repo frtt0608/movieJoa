@@ -11,7 +11,6 @@
         <v-card style="margin:10px; height: 25rem; width: 15rem; border-radius:15px;" color="#424242" dark>
           <v-img :src="card.url || 'https://cdn.samsung.com/etc/designs/smg/global/imgs/support/cont/NO_IMG_600x600.png'" style="height:16rem; width: 15rem;" />
           <v-card-text>
-            <!-- <p style="font-size: 1rem;">{{ card.title }}</p> -->
             <p class="movietitle" style="font-size: 1rem; -webkit-transition: 0.5;">
               {{ card.title.substring(0, card.title.indexOf("(")) }}<br>
               <span class="hovertext2">{{ card.title.substring(0) }}</span>
@@ -135,7 +134,6 @@ export default {
 <style>
   .movietitle .hovertext2 {
     visibility: hidden;
-    /* width: 250px; */
     background-color: black;
     color: #fff;
     text-align: center;

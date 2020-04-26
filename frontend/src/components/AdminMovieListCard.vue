@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-hover v-slot:default="{ hover }">
+    <v-hover v-slot:default="{hover}">
       <v-layout arow wrap text-left>
         <v-flex>
           <v-card style="margin:10px; height: 24rem; width: 15rem; border-radius:15px;" color="#424242" dark>
@@ -108,7 +108,6 @@ export default {
     genres: ['Action', 'Adventure', 'Animation', 'Comedy',
     'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror',
     'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western', "Children's"],
-    // genres_array : []
     tmp_genres_array : [],
     tmp_title : '',
   }),
@@ -162,7 +161,6 @@ export default {
 <style>
   .movietitle .hovertext2 {
     visibility: hidden;
-    /* width: 250px; */
     background-color: black;
     color: #fff;
     text-align: center;

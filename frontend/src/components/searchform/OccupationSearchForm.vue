@@ -35,7 +35,6 @@ export default {
         };
         this.submit(params);
       } else {
-        // console.log(this.picked, 123123)
         const params = {
           occupation: this.picked,
         };

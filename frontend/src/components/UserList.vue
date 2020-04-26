@@ -4,12 +4,7 @@
       {{ userListCards.length }}명이 조회되었습니다.
     </div>
 
-    <!-- <div v-if="!userListCards.length" style="color: white">
-      검색하신 유저가 없습니다!
-    </div> -->
-
     <v-layout row wrap>
-      <!-- {{userListCards}} -->
       <v-flex v-for="(card, i) in userListCardsSliced" :key="i" pa-2 xs12 sm6 md4 lg3 xl2>
         <UserListCard
           :id="card.user_id"

@@ -44,7 +44,6 @@ export default {
   }),
   methods: {
     createScore() {
-      // 시작
       var preload = document.querySelector('#check2')
       preload.style.display = 'block'
       const apiUrl = '/api'
@@ -52,7 +51,6 @@ export default {
         scores:this.scores,
         pk:this.$session.get('id_number')
       }).then(() => {
-        // 끝
         preload.style.display = 'none'
         this.$swal.fire({
             title: '평점 등록 완료!',

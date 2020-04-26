@@ -9,7 +9,6 @@
     </div>
     <br>
     <v-btn large color="indigo white--text" @click="onSubmit">Search</v-btn>
-    <!-- 	M, F -->
   </v-form>
 </template>
 

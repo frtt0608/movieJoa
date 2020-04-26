@@ -215,7 +215,6 @@ export default {
   }
   .movietitle .hovertext {
     visibility: hidden;
-    /* width: 250px; */
     background-color: black;
     color: #fff;
     text-align: center;

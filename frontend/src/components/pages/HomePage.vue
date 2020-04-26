@@ -12,7 +12,6 @@
       </v-layout>
       <v-layout row wrap>
         <v-flex xs12>
-          <!-- <h1>(1) 로그인하셨습니까?</h1> -->
           <!-- 1. 로그인 여부 -->
           <div v-if="user">
             <!-- 로그인 ID : {{this.user}}<br><br> -->
@@ -195,14 +194,6 @@ export default {
     -moz-transition: all 0.5s;
     transition: all 0.5s;
   }
-
-  /* p:nth-child(1) .a {
-    color: #fff;
-    font-family: 'Monoton', cursive;
-    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
-    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
-    animation: neon1 1.5s ease-in-out infinite alternate;
-  } */
 
   p:nth-child(3) .a {
     color: #FFDD1B;

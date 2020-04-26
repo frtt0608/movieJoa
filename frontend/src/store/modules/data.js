@@ -3,7 +3,6 @@ import api from '../../api'
 
 // initial state
 const state = {
-    // shape: [{ id, title, genres, viewCnt, rating }]
     movieSearchList: [],
     temp_movie: [],
     movieSearchList_admin: [],
@@ -22,12 +21,10 @@ const state = {
 const actions = {
     async searchMovies({ commit }, params) {
         state.recent_SearchName = params.title
-        // document.style.opacity = 0.1
         var preload = document.querySelector('#searching')
         preload.style.display = 'block'
         const resp = await api.searchMovies(params)
         state.canmore = resp.data[1]
-        // console.log(resp)
         preload.style.display = 'none'
         const movies = resp.data[0].map(d => ({
             id: d.id,
@@ -45,9 +42,6 @@ const actions = {
         return movies
     },
     async plusMovies({ commit }, params) {
-        // document.style.opacity = 0.1
-        // var preload = document.querySelector('#searching')
-        //     // preload.style.display = 'block'
         const resp = await api.searchMovies(params)
         state.canmore = resp.data[1]
         const movies = resp.data[0].map(d => ({
@@ -92,9 +86,6 @@ const actions = {
             return
         } else {
             const resp = await api.getMovies_homepage()
-            // if (!resp.data.length) {
-            //     alert('해당 이름의 영화는 없습니다.')
-            // }
             const movies = resp.data.map(d => ({
                 id: d.id,
                 title: d.title,
@@ -138,9 +129,6 @@ const actions = {
     async getMovies_subscription_userbased({ commit }, params) {
         var id = params.id
         if (state.movieList_homepage_itembased.length !== 0) {
-            // if (params.approval===true) {
-            //   console.log(document.querySelector('#item'))
-            // }
             return
         } else {
             const resp = await api.getMovies_homepage_userbased(params)
@@ -311,16 +299,9 @@ const mutations = {
         state.username = username
     },
     setMovieList_homepage_itembased(state, data) {
-        if (data.params.approval) {
-            // document.querySelector('#item').style.display = 'block';
-        }
-        // console.log(data)
         state.movieList_homepage_itembased = data.movies.map(m => m)
     },
     setMovieList_homepage_userbased(state, data) {
-        if (data.params.approval) {
-            // document.querySelector('#user').style.display = 'block';
-        }
         state.movieList_homepage_userbased = data.movies.map(m => m)
     },
 }

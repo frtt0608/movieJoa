@@ -20,22 +20,6 @@
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-card-text>
             {{username}}
-            <!-- <v-text-field
-              id="username"
-              v-model="username"
-              hint="이름을 변경할 수 있습니다."
-              name="username"
-              label="Username"
-              clearable
-            /> -->
-            <!-- <v-text-field
-              id="gender"
-              v-model="gender"
-              hint="성별을 변경할 수 있습니다."
-              name="gender"
-              label="Gender"
-              clearable
-            /> -->
             <v-text-field
               v-model="age"
               type="number"

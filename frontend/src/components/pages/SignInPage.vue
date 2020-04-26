@@ -93,7 +93,6 @@ export default {
          else {
           __this.username = ''
           __this.password = ''
-          // alert('ID 또는 비밀번호가 다릅니다. 확인해주세요!')
           this.$swal.fire({
             text: 'ID 또는 비밀번호가 다릅니다. 확인해주세요!',
             type: 'error'
@@ -101,13 +100,6 @@ export default {
         }
       })
     },
-    // async usercheck() {
-    //   let tmp = await axios.get('/api/auth/userState').then(res => {
-    //     if (res.data.user != '') {
-    //       router.go(-1)
-    //     }
-    //   })
-    // }
   }
 };
 </script>

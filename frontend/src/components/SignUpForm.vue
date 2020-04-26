@@ -72,19 +72,15 @@ export default {
       occupation: '',
       nameRules: [
         function(v) {
-          // 아예 없는지 체크
           if (!v) {
             return 'Name is required'
           }
-          // 길이 제한 체크
           if (v.length > 10) {
             return 'Name must be less than 10 characters'
           }
-          // 공백 체크
           if (v!==v.replace(/(\s*)/g,"")) {
             return "공백은 안돼요~"
           }
-          //특수문자 체크
           var pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/;
           if (pattern_spc.test(v)) {
             return "username에 특수문자는 사용 불가능!"
@@ -94,15 +90,12 @@ export default {
       ],
       passwordRules: [
         function(v) {
-          // 아예 없는지 체크
           if (!v) {
             return 'Password is required'
           }
-          // 길이 제한 체크
           if (v.length < 5 || v.length > 20) {
             return 'Password must be 5~20 characters'
           }
-          // 공백 체크
           if (v!==v.replace(/(\s*)/g,"")) {
             return "공백은 안돼요~"
           }
@@ -111,7 +104,6 @@ export default {
       ],
       ageRules : [
         function(v) {
-          // 양수인지 체크
           if (v<=0) {
             return 'Age must be more than 1'
           } return !!v
@@ -119,7 +111,6 @@ export default {
       ],
       occupationRules : [
         function(v) {
-          // 등록했는지 체크
           if (!v) {
             return 'Occupation is required'
           } return !!v

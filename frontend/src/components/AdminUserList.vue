@@ -40,7 +40,6 @@ export default {
       return Math.floor((this.userListCards.length + this.cardsPerPage - 1) / this.cardsPerPage)
     },
     userListCardsSliced: function() {
-      // console.log(this.userListCards, 3)
       return this.userListCards.slice(this.cardsPerPage * (this.page - 1), this.cardsPerPage * this.page)
     },
   }

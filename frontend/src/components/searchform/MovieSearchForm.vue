@@ -21,7 +21,6 @@ export default {
   },
   data: () => ({
     title: "",
-    // cnt: 10,
     movielist:[]
   }),
   methods: {

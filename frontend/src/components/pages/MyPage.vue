@@ -66,13 +66,6 @@
         </v-card-title>
         <v-card-text>
           <v-container>
-            <!-- <v-text-field
-              v-model="username"
-              :counter="10"
-              label="Name"
-              :rules="nameRules"
-              required
-            /> -->
             <v-layout>
               <span style="vertical-align: middle; color: rgba(0, 0, 0, 0.54); padding-left: 0.3rem; padding-right: 2.5rem;">Gender</span>
               <v-radio-group v-model="user.gender" row>
@@ -132,7 +125,7 @@ export default {
     modal: false,
     checkCSV: false,
     movie_show: false,
-    pageNum: 4,
+    pageNum: 5,
     nameRules: [
       v => !!v || 'Name is required',
       v => (v && v.length <= 10) || 'Name must be less than 10 characters'

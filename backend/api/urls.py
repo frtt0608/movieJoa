@@ -18,12 +18,10 @@ from api.views import KNN_views
 
 urlpatterns = [
     # user 관리
-    # path('auth/signup-many/', auth_views.signup_many, name='sign_up_many'),
     path('auth/signup/', auth_views.signup, name='sign_up'),
     path('auth/signin/', auth_views.signin, name='sign_in'),
     path('auth/userState/', auth_views.userstate, name='user_state'),
     path('auth/logout/', auth_views.logout, name='logout'),
-    # path('auth/logout/', auth_views.logout, name='user_state'),
 
     path('movies/', movie_views.movies, name='movie_list'),
     path('movies/<int:movie_id>', movie_views.detail, name='movie_datail'),
@@ -49,24 +47,8 @@ urlpatterns = [
     path('profile/<int:user_pk>/update/', admin_views.profile_update, name='profile_update'),
     path('profile/<int:user_pk>/delete/', admin_views.profile_delete, name='profile_delete'),
 
-    # path('movies/getarray/', movie_views.getarray, name="getarray"),
-    # path('cluster/hcluster/user/', Hcluster_views.user_hcluster, name="hcluster_user"),
-    # path('cluster/hcluster/movie/', Hcluster_views.movie_hcluster, name="hcluster_movie"),
-    # path('cluster/emcluster/user/', EMcluster_views.user_emcluster, name="emcluster_user"),
-    # path('cluster/emcluster/movie/', EMcluster_views.movie_emcluster, name="emcluster_movie"),
-
-    # # Kmeans_clustering DB 추가
-    # path('km_clu/movie/', Kmeans_views.create_movie_clu, name="movie_kmclu"),
-    # path('km_clu/movie/delete/', Kmeans_views.delete_movie, name="movie_delete"),
-    # path('km_clu/user/', Kmeans_views.create_user_clu, name="user_kmclu"),
-    # path('cluster/km/movie/', Kmeans_views.kmeans_movie, name="kmeans_movie"),
-
     # cluster 관련 정보를 조회, 변경합니다.
     path('cluster/', cluster_views.cluster, name='cluster'),
-    # path('imdb/', IMDB_views.getmovies, name='imdb'),
-
-    # matrix factorization 수행
-    # path('matrix/', matrix_views.matrix_factorization, name='matrix'),
 
     # # subscription 관련 정보를 생성, 관리 합니다.
     # create : 유저가 구독신청하기
@@ -77,8 +59,6 @@ urlpatterns = [
     path('subscription/itembasedmovies/<int:profile_pk>', subscription_views.itembased_movies, name="subscription_itembasedmovies"),
     path('subscription/userbasedmovies/<int:profile_pk>', subscription_views.userbased_movies, name="subscription_userbasedmovies"),
     path('subscription/itembasedmovies2/<int:profile_pk>', subscription_views.itembased_movies2, name="subscription_itembasedmovies2"),
-    # brightics 관련된 것입니다. 사실상 쓸 일은 없을 것입니다 : 김슬기
-    # path('brightics/', brightics_views.make),
 
     # KNN 알고리즘!
     path('KNN/movie/', KNN_views.KNN_algorithm_movie),
@@ -86,7 +66,6 @@ urlpatterns = [
     path('KNN/checkCSV/', KNN_views.checkCSV),
 
     # Rating CRUD
-    # path('movie/<int:movie_pk>/score/check/', rate_views.checkRating),
     path('movie/<int:movie_pk>/score/cdu/', rate_views.cduRating),
     path('signup/new_cluster/', auth_views.new_cluster)
 ]

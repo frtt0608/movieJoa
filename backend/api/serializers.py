@@ -27,7 +27,6 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ('id', 'title', 'genres_array', 'watch_count', 'score_users', 'averagerate','plot','url','director','castings')
-        # fields = ('id', 'title', 'genres_array', 'watch_count', 'score_users', 'averagerate','plot','url','director')
 
     def get_castings(self, obj):
         casting = Movie.objects.get(id=obj.id).casting
@@ -38,29 +37,14 @@ class MovieSerializer(serializers.ModelSerializer):
 
     def get_averagerate(self, obj):
 
-        ## version 1
         average_rate = Rate.objects.filter(MovieID=obj.id).aggregate(Avg('rating'))
         if average_rate['rating__avg']!=None:
             return round(average_rate['rating__avg'], 2)
         else:
             return 0
-        ##
+        
     def get_genres_array(self, obj):
         return '|'.join(obj.genres_array)
-        ## version 2
-        # result = 0
-        # count = 0
-        # movie = Movie.objects.get(pk=obj.id)
-        # rates = movie.rate_set.all()
-        # for rate in rates:
-        #     count += 1
-        #     result += rate.rating
-        # # print(type(obj.id), '2') 이건 그거 자체
-        # if count==0:
-        #     return 0
-        # else:
-        #     print(result/count, obj.title)
-        #     return result/count
 
 class Movie_Genre_Serializer(serializers.ModelSerializer):
     genres_array = serializers.SerializerMethodField('get_genres_array')
@@ -71,7 +55,6 @@ class Movie_Genre_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ('id', 'title', 'genres_array', 'watch_count', 'score_users', 'averagerate','plot','url','director','castings')
-        # fields = ('id', 'title', 'genres_array', 'watch_count', 'score_users', 'averagerate','plot','url','director')
 
     def get_castings(self, obj):
         casting = Movie.objects.get(id=obj.id).casting
@@ -82,7 +65,6 @@ class Movie_Genre_Serializer(serializers.ModelSerializer):
 
     def get_averagerate(self, obj):
 
-        ## version 1
         average_rate = Rate.objects.filter(MovieID=obj.id).aggregate(Avg('rating'))
         if average_rate['rating__avg']!=None:
             return round(average_rate['rating__avg'], 2)
@@ -105,7 +87,6 @@ class Movie_Age_Serializer(serializers.ModelSerializer):
     casting = serializers.SerializerMethodField('get_casting')
     class Meta:
         model = Movie
-        # fields = ('id', 'title', 'genres_array', 'watch_count', 'averagerate')
         fields = ('id', 'title', 'genres_array','watch_count','averagerate', 'plot','url','director','casting')
     def get_id(self, obj):
         return obj['MovieID']
@@ -130,7 +111,6 @@ class Movie_Age_Serializer(serializers.ModelSerializer):
             tmp = tmp.split('|')
             tmp = '|'.join(tmp[:3])
         return tmp
-        # return obj['MovieID__casting']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -149,5 +129,4 @@ class SubscriptionSerializer(serializers.ModelSerializer):
     def get_username(self, obj):
         profile = obj.Profile
         user = User.objects.get(pk=profile.user_id)
-        # print(username.__dict__, '떳냐아')
         return user.username

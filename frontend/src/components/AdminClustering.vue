@@ -2,13 +2,13 @@
   <v-form ref="form">
     <div>
       <p style="font-size: 1rem; font-family: 'Jua', sans-serif;">Cluster 알고리즘 설정하기:</p>
-      <div v-for="(way, index) in ways" style="display:inline-block;">
+      <div v-for="(way) in ways" :key="way" style="display:inline-block;">
         <input v-model="picked_way" type="radio" :value="way">
         <label style="font-size:10px; ">{{ way }}</label> &nbsp;
       </div>
       <br><br>
       <p style="font-size: 1rem; font-family: 'Jua', sans-serif;">Cluster 개수 설정하기:</p>
-      <div v-for="(n_component, index) in n_components" style="display:inline-block;">
+      <div v-for="(n_component) in n_components" :key="n_component" style="display:inline-block;">
         <input v-model="picked_n" type="radio" :value="n_component">
         <label style="font-size:10px;">{{ n_component }}개</label> &nbsp;
       </div>

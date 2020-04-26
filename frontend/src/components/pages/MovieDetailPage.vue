@@ -1,7 +1,7 @@
 <!-- 영화 검색 페이지 -->
 <template>
   <v-container grid-list-md text-center>
-    <v-layout justify-center wrap>
+    <v-layout column>
       <!-- 검색 폼 by 영화이름-->
       <v-flex>
         <div style="color:rgb(255,255,255)">No. {{ movie_data[0].id }}</div>
@@ -15,13 +15,6 @@
             </div>
             <v-flex v-show="rate_show">
               <div class="mx-auto" style="width:200px">
-                <!-- <v-text-field
-                  v-model="score"
-                  label="score"
-                  :rules="scoreRules"
-                  type="number"
-                  required
-                /> -->
                 내가 남긴 평점 : {{score}}
                 <v-rating
                   v-model="score"
@@ -35,7 +28,6 @@
                 <v-btn v-if="!rate_flag" @click="createRating(movie_data[0].id)">등록</v-btn>
                 <v-btn v-if="rate_flag" @click="deleteRating(movie_data[0].id)">삭제</v-btn>
                 <v-btn v-if="rate_flag" @click="updateRating(movie_data[0].id)">수정</v-btn>
-                <!-- <v-btn @click="rate_show = !rate_show; score=tmp_score">취소</v-btn> -->
               </div>
             </v-flex>
             <div class="grey--text">평점 : {{ movie_data[0].averagerate }} , 조회수 : {{ movie_data[0].watch_count }}</div>
@@ -43,33 +35,17 @@
             <div class="grey--text" v-for="(genre, i) in this.genreList" v-bind:key="i">{{genre}}</div>
           </v-col>
           <br>
-          <v-btn icon @click="show = !show">
-            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-          </v-btn>
-          <v-expand-transition>
-            <div v-show="show">
-              <p style="font-size: 1.5rem; color: white; font-family: 'Jua', sans-serif;">출연배우</p>
-              <div v-for="(casting, i) in this.castingList" v-bind:key="i">
-              <span class="grey--text" style="font-family: 'Jua', sans-serif;">
-                {{casting}}</span>
-              </div>
-              <p style="font-size: 1.5rem; color: white; font-family: 'Jua', sans-serif;"
-                  >줄거리</p>
-              <v-card-text>{{ movie_data[0].plot }}</v-card-text> 
-            </div>
-          </v-expand-transition>
         </v-card>
         <p style="font-size: 3rem; color: white; font-family: 'Jua', sans-serif;">Similar Movies</p>
+        <br>
       </v-flex>
       <v-flex>
-        <carousel :per-page="4">
-          <slide v-for="(movie, index) in movie_data.slice(1)" :key="index" style="height: 22rem; width: 15rem;">
-            <v-card style="margin:10px; height: 21rem; width: 15rem; border-radius:15px;" color="#424242" dark>
+        <carousel :per-page="5">
+          <slide v-for="(movie, index) in movie_data.slice(1)" :key="index" style="height: 22rem;">
+            <v-card style="height: 21rem; width: 15rem; border-radius:15px;" color="#424242" dark>
               <v-img contain :src="movie.url || 'https://cdn.samsung.com/etc/designs/smg/global/imgs/support/cont/NO_IMG_600x600.png'" style="height:16rem; width: 15rem;" />
               <v-card-text>
                 <div class="movietitle2" style="margin-left:0.3rem;">
-                  <!-- {{ movie.title.substring(0, movie.title.indexOf("(")) }}<br>
-                  <span class="hovertext">{{ movie.title.substring(0, movie.title.indexOf("(")) }}</span> -->
                   <span>{{ movie.title }}</span>
                   <span style="margin-right:0.5rem;">{{ movie.title }}</span>
                 </div>
@@ -81,7 +57,10 @@
         </carousel>
       </v-flex>
     </v-layout>
-    <v-btn @click="search()">검색으로 이동</v-btn>
+    <br><br>
+    <v-flex>
+      <v-btn @click="search()">검색으로 이동</v-btn>
+    </v-flex>
   </v-container>
 </template>
 
@@ -233,7 +212,6 @@ export default {
   }
   .movietitle2 .hovertext2 {
     visibility: hidden;
-    /* width: 80%; */
     background-color: black;
     color: #fff;
     text-align: left;
