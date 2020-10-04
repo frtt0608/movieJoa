@@ -12,21 +12,14 @@ def movies(request):
     if request.method == 'GET':
         id = request.GET.get('id', request.GET.get('movie_id', None))
         title = request.GET.get('title', None)
-        # cnt = int(request.GET.get('cnt'))
-        # print(cnt)
-
         movies = Movie.objects.all()
-        # pprint.pprint(movies)
-
+    
         if id:
             movies = movies.filter(pk=id)
-
         if title:
             movies = movies.filter(title__icontains=title)
-        # else:
-        #     movies = Movie.objects.all()[cnt-10:cnt]
+        
         num = request.GET.get('num', None)
-
         canmore = True
         if len(movies) >= 12:
             if num:

@@ -15,7 +15,6 @@ import random
 #                   'Thriller':15,'War':16,'Western':17}
 #   my_list = []
 #   genre_cnt = [[0 for i in range(18)] for j in range(k+1)]
-  
 
 #   if request.method == 'GET':
 #     movies = Movie_Cluster_Kmeans.objects.all();
@@ -124,7 +123,7 @@ def create_movie_clu(request):
     wr = csv.reader(f)
     for line in wr:
       movie_pk = int(line[0])
-      movie = Movie.objects.get(pk=movie_pk);
+      movie = Movie.objects.get(pk=movie_pk)
       Movie_Cluster_Kmeans(
         MovieId = movie,
         K3 = int(line[1]),
@@ -227,3 +226,4 @@ def create_user_clu(request):
 
 # print("< - < < - < - < - my user - > - > - > - > - >")
 # print(my_users)
+

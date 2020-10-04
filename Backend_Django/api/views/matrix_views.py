@@ -144,28 +144,8 @@ class MatrixFactorization():
 
 
     def print_results(self):
-        """
-        print fit results
-        """
-        """
-        print("User Latent P:")
-        print(self._P)
-        print("Item Latent Q:")
-        print(self._Q.T)
-        print("P x Q:")
-        print(self._P.dot(self._Q.T))
-        print("bias:")
-        print(self._b)
-        print("User Latent bias:")
-        print(self._b_P)
-        print("Item Latent bias:")
-        print(self._b_Q)
-        print("Final RMSE:")
-        print(self._training_process[self._epochs-1][1])
-        """
+        
         # 결과 매트릭스를 DB에 저장하기
-        # print("Final R matrix:")
-        # print(self.get_complete_matrix())
         result = self.get_complete_matrix().tolist()
         tmp = self._R.tolist()
         for i in range(1, len(result[0])):

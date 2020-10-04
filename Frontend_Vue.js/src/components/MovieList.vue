@@ -70,7 +70,7 @@ export default {
     page: 1,
     seemode_rate:false,
     tmp_movieList:[],
-    num:1,
+    num: 1,
   }),
   computed: {
     // pagination related variables

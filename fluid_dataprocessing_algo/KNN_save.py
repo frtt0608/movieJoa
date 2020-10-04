@@ -20,9 +20,9 @@ def CheckCluster(cluster, Movies, Nearest_movie):
 
   clu_list = [0 for i in range(k+1)]
   for pk in Nearest_movie:
-    clu_list[predict[pk-1]] += 1;
+    clu_list[predict[pk-1]] += 1
   input_movie_cluster = clu_list.index(max(clu_list))
-  cluster_list = [];
+  cluster_list = []
   for i in range(len(predict)):
     if predict[i]==3: cluster_list.append(i+1)
   tmp = random.sample(list(cluster_list), 10)

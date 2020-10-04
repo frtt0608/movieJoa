@@ -60,7 +60,7 @@ def create_Movie():
 def KNN_algorithm_movie(request):
   new_movie(request)
   input_movie = Movie.objects.all().last()
-  input_movie_genre = [0 for i in range(len(label))];
+  input_movie_genre = [0 for i in range(len(label))]
 
   for genre in input_movie.genres.split("|"):
     idx = label.index(genre)
@@ -86,7 +86,7 @@ def KNN_algorithm_movie(request):
 # K, H, EM 클러스터링!(K3~K7, H3~H7, EM3~EM7 저장하기)
 def CheckCluster(data, Nearest_data, input_data, target):
   # EM
-  EM_list = [];
+  EM_list = []
   for k in range(3,8):
     Movies_scaled = normalize(data)
     df = pd.DataFrame(Movies_scaled)
@@ -96,10 +96,10 @@ def CheckCluster(data, Nearest_data, input_data, target):
     clu_list = [0 for i in range(k+1)]
     if(target=="MOVIE"):
       for pk in Nearest_data:
-        clu_list[predict[pk-1]] += 1;
+        clu_list[predict[pk-1]] += 1
     elif(target=="USER"):
       for pk in Nearest_data:
-        clu_list[predict[pk-2]] += 1;
+        clu_list[predict[pk-2]] += 1
     EM_list.append(clu_list.index(max(clu_list)))
   if(target=="MOVIE"):
     Movie_Cluster_EM(MovieId=input_data, EM3=EM_list[0], EM4=EM_list[1], EM5=EM_list[2], EM6=EM_list[3], EM7=EM_list[4]).save()
@@ -107,7 +107,7 @@ def CheckCluster(data, Nearest_data, input_data, target):
     User_Cluster_EM(UserID=input_data, EM3=EM_list[0], EM4=EM_list[1], EM5=EM_list[2], EM6=EM_list[3], EM7=EM_list[4]).save()
 
   # H
-  H_list = [];
+  H_list = []
   for k in range(3,8):
     Movies_scaled = StandardScaler().fit_transform(data)
     df = pd.DataFrame(Movies_scaled)
@@ -117,10 +117,10 @@ def CheckCluster(data, Nearest_data, input_data, target):
     clu_list = [0 for i in range(k+1)]
     if(target=="MOVIE"):
       for pk in Nearest_data:
-        clu_list[predict[pk-1]] += 1;
+        clu_list[predict[pk-1]] += 1
     elif(target=="USER"):
       for pk in Nearest_data:
-        clu_list[predict[pk-2]] += 1;
+        clu_list[predict[pk-2]] += 1
     H_list.append(clu_list.index(max(clu_list)))
   if(target=="MOVIE"):
     Movie_Cluster_Hmeans(MovieId=input_data, H3=H_list[0], H4=H_list[1], H5=H_list[2], H6=H_list[3], H7=H_list[4]).save()
@@ -128,7 +128,7 @@ def CheckCluster(data, Nearest_data, input_data, target):
     User_Cluster_Hmeans(UserID=input_data, H3=H_list[0], H4=H_list[1], H5=H_list[2], H6=H_list[3], H7=H_list[4]).save()
 
   # KM
-  K_list = [];
+  K_list = []
   for k in range(3,8):
     df = pd.DataFrame(data)
     model = KMeans(n_clusters=k, algorithm='auto').fit(df)
@@ -137,10 +137,10 @@ def CheckCluster(data, Nearest_data, input_data, target):
     clu_list = [0 for i in range(k+1)]
     if(target=="MOVIE"):
       for pk in Nearest_data:
-        clu_list[predict[pk-1]] += 1;
+        clu_list[predict[pk-1]] += 1
     elif(target=="USER"):
       for pk in Nearest_data:
-        clu_list[predict[pk-2]] += 1;
+        clu_list[predict[pk-2]] += 1
     K_list.append(clu_list.index(max(clu_list)))
   if(target=="MOVIE"):
     Movie_Cluster_Kmeans(MovieId=input_data, K3=K_list[0]+1, K4=K_list[1]+1, K5=K_list[2]+1, K6=K_list[3]+1, K7=K_list[4]+1).save()
@@ -207,5 +207,5 @@ def checkCSV(request):
   Users = Users['user_pk']
   for user_pk in Users:
     if(user_pk==pk):
-      flag = True; break;
+      flag = True; break
   return Response(data=flag, status=status.HTTP_200_OK)

@@ -118,29 +118,29 @@ def CheckCluster(Nearest, input_data):
            [0,0,0,0],
            [0,0,0,0,0],
            [0,0,0,0,0,0],
-           [0,0,0,0,0,0,0]]];
+           [0,0,0,0,0,0,0]]]
   for profile in Nearest:
     K_clusters = profile.user_cluster_Kmeans.all()[0]
     H_clusters = profile.user_cluster_Hmeans.all()[0]
     EM_clusters = profile.user_cluster_EM.all()[0]
     # K
-    table[0][0][(K_clusters.K3)] += 1;
-    table[0][1][(K_clusters.K4)] += 1;
-    table[0][2][(K_clusters.K5)] += 1;
-    table[0][3][(K_clusters.K6)] += 1;
-    table[0][4][(K_clusters.K7)] += 1;
+    table[0][0][(K_clusters.K3)] += 1
+    table[0][1][(K_clusters.K4)] += 1
+    table[0][2][(K_clusters.K5)] += 1
+    table[0][3][(K_clusters.K6)] += 1
+    table[0][4][(K_clusters.K7)] += 1
     # H
-    table[1][0][(H_clusters.H3)] += 1;
-    table[1][1][(H_clusters.H4)] += 1;
-    table[1][2][(H_clusters.H5)] += 1;
-    table[1][3][(H_clusters.H6)] += 1;
-    table[1][4][(H_clusters.H7)] += 1;
+    table[1][0][(H_clusters.H3)] += 1
+    table[1][1][(H_clusters.H4)] += 1
+    table[1][2][(H_clusters.H5)] += 1
+    table[1][3][(H_clusters.H6)] += 1
+    table[1][4][(H_clusters.H7)] += 1
     # EM
-    table[2][0][(EM_clusters.EM3)] += 1;
-    table[2][1][(EM_clusters.EM4)] += 1;
-    table[2][2][(EM_clusters.EM5)] += 1;
-    table[2][3][(EM_clusters.EM6)] += 1;
-    table[2][4][(EM_clusters.EM7)] += 1;
+    table[2][0][(EM_clusters.EM3)] += 1
+    table[2][1][(EM_clusters.EM4)] += 1
+    table[2][2][(EM_clusters.EM5)] += 1
+    table[2][3][(EM_clusters.EM6)] += 1
+    table[2][4][(EM_clusters.EM7)] += 1
   for j in range(2):
     if j==0:
       for i in range(5):
@@ -173,7 +173,7 @@ def new_cluster(request):
     Users = Users['user_pk']
     for user_pk in Users:
       if(user_pk==user):
-        flag = True; break;
+        flag = True; break
     if(flag): return Response(data=1, status=status.HTTP_200_OK)
     elif(user==""): return Response(data=0, status=status.HTTP_200_OK)
     movies = request.data.get('movies')

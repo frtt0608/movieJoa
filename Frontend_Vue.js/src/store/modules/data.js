@@ -57,9 +57,9 @@ const actions = {
             casting: d.casting
         }))
         if (params.where) {
-          commit('plusMovieSearchList_admin', movies)
+            commit('plusMovieSearchList_admin', movies)
         } else
-        commit('plusMovieSearchList', movies)
+            commit('plusMovieSearchList', movies)
     },
     async searchMovies_admin({ commit }, params) {
         state.recent_SearchName = params.title
