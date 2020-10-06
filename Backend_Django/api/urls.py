@@ -49,18 +49,13 @@ urlpatterns = [
 
     # cluster 관련 정보를 조회, 변경합니다.
     path('cluster/', cluster_views.cluster, name='cluster'),
-
-    # # subscription 관련 정보를 생성, 관리 합니다.
-    # create : 유저가 구독신청하기
-    # manager(apply) : 관리자가 구독관련된 것을 적용하기
-    # itembasedmovies : 구독자에게 영화 추천하기 , id 는 구독자의 프로필 아이디이다.
     path('subscription/create/', subscription_views.create, name='subscription_create'),
     path('subscription/manager/', subscription_views.manager, name="subscription_manager"),
     path('subscription/itembasedmovies/<int:profile_pk>', subscription_views.itembased_movies, name="subscription_itembasedmovies"),
     path('subscription/userbasedmovies/<int:profile_pk>', subscription_views.userbased_movies, name="subscription_userbasedmovies"),
     path('subscription/itembasedmovies2/<int:profile_pk>', subscription_views.itembased_movies2, name="subscription_itembasedmovies2"),
 
-    # KNN 알고리즘!
+    # KNN 알고리즘
     path('KNN/movie/', KNN_views.KNN_algorithm_movie),
     path('KNN/user/', KNN_views.KNN_algorithm_user),
     path('KNN/checkCSV/', KNN_views.checkCSV),

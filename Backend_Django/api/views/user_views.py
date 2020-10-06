@@ -12,44 +12,19 @@ import pandas as pd
 def users(request):
     if request.method == 'GET':
         username = request.GET.get('username', None)
-        # users = User.objects.all()[1:]
 
         if username:
             users = User.objects.filter(username__icontains=username)
         else:
             users = User.objects.all()[1:]
-        # print(users)
         serializer = UserSerializer(users, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
-        # return Response(status=status.HTTP_200_OK)
-
-    # if request.method == 'DELETE':
-    #     movie = Movie.objects.all()
-    #     movie.delete()
-    #     return Response(status=status.HTTP_200_OK)
-
-    # if request.method == 'POST':
-    #     users = request.data.get('movies', None)
-    #     for movie in movies:
-    #         id = movie.get('id', None)
-    #         title = movie.get('title', None)
-    #         genres = movie.get('genres', None)
-    #
-    #         if not (id and title and genres):
-    #             continue
-    #         if Movie.objects.filter(id=id).count() > 0 or Movie.objects.filter(title=title).count() > 0:
-    #             continue
-    #
-    #         Movie(id=id, title=title, genres='|'.join(genres)).save()
-    #
-    #     return Response(status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST', 'DELETE', 'PUT'])
 def detail(request, user_id):
     user = User.objects.get(pk=user_id)
     user_profile = Profile.objects.get(user=user)
     if request.method == 'GET':
-        # 클러스터로 k, way 찾기
         clu = Cluster.objects.get(pk=1)
         k = clu.n_component
         way = clu.way
@@ -144,7 +119,6 @@ def detail(request, user_id):
             for i in numbers:
                 serializer = ProfileSerializer(profiles[i])
                 my_cluster.append(serializer.data)
-        # csv에 평점 데이터 유무 확인
         flag = False
         Users = pd.read_csv('./api/fixtures/user_rating.csv', header=0)
         Users = Users['user_pk']
@@ -167,13 +141,13 @@ def detail(request, user_id):
 def userMovie(request, user_id):
     user_profile = Profile.objects.get(user=user_id)
     movies = []
-    rates = user_profile.profile_rate.all();
+    rates = user_profile.profile_rate.all()
     cnt=0
     print(len(rates))
     for rate in rates:
         serializer = MovieSerializer(rate.MovieID)
         movies.append(serializer.data)
-        cnt+=1;
+        cnt+=1
         if cnt==10:
             break
     return Response(data = movies, status=status.HTTP_200_OK)

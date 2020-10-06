@@ -8,19 +8,6 @@ import pprint
 
 @api_view(['GET', 'POST', 'DELETE'])
 def ratings(request):
- 	# if request.method == 'GET':
-    #     id = request.GET.get('id', request.GET.get('movie_id', None))
-    #     title = request.GET.get('title', None)
-	#
-    #     movies = Movie.objects.all()
-	#
-    #     if id:
-    #         movies = movies.filter(pk=id)
-    #     if title:
-    #         movies = movies.filter(title__icontains=title)
-	#
-    #     serializer = MovieSerializer(movies, many=True)
-    #     return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 	if request.method == 'POST':
 		rating_data = request.data.get('ratings', None)
@@ -36,20 +23,6 @@ def ratings(request):
 				rating=Rating, Timestamp=Timestamp).save()
 
 		return Response(status=status.HTTP_200_OK)
-
-# @api_view(['POST'])
-# def checkRating(request, movie_pk):
-#   pprint.pprint(request.data)
-#   if request.method == 'POST':
-#     rates = Rate.objects.filter(MovieID=movie_pk) # 영화에 담긴 평점 모두 가져오기
-#     user_pk = request.data.get('user_pk')         # 유저
-#     profile = Profile.objects.get(user=user_pk)   # 유저의 프로필
-#     rate = rates.objects.get(UserID=profile.pk, default=None)        # 유저가 영화에 남긴 평점 가져오기
-#     print(rate)
-#     if(rate==[]):
-#       return Response(data=False, status=status.HTTP_200_OK)
-#     else:
-#       return Response(data=True, status=status.HTTP_200_OK)
 
 @api_view(['PUT', 'POST', 'DELETE'])
 def cduRating(request, movie_pk):

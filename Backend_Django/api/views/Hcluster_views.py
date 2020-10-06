@@ -15,7 +15,6 @@ def user_hcluster(request):
         H5 = user.get('H5')
         H6 = user.get('H6')
         H7 = user.get('H7')
-        # cluster data를 받아 객체 생성 및 추가
         User_Cluster_Hmeans(UserID=Profile.objects.get(user=User.objects.get(pk=id)), H3=H3, H4=H4, H5=H5, H6=H6, H7=H7).save()
     return Response(status=status.HTTP_200_OK)
 
@@ -30,6 +29,5 @@ def movie_hcluster(request):
         H5 = movie.get('H5')
         H6 = movie.get('H6')
         H7 = movie.get('H7')
-        # cluster data를 받아 객체 생성 및 추가
         Movie_Cluster_Hmeans(MovieId=Movie.objects.get(title=title), H3=H3, H4=H4, H5=H5, H6=H6, H7=H7).save()
     return Response(status=status.HTTP_200_OK)
